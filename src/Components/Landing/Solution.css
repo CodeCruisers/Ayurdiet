@@ -545,30 +545,93 @@
   }
 }
 
-/* Interactive Status */
 .interactive-status {
   position: absolute;
   bottom: 25px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-120%) translateY(0);
   font-size: 0.9rem;
   color: var(--primary-green);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(15px);
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 20px;
   opacity: 0;
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
   z-index: 15;
   border: 1px solid rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .module-node:hover ~ .interactive-status,
 .hub-core:hover ~ .interactive-status {
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
+  animation: statusSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
+@keyframes statusSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%) translateY(0);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(-45%) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Optional: Add a subtle bounce effect */
+.module-node:hover ~ .interactive-status,
+.hub-core:hover ~ .interactive-status {
+  animation: statusSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both,
+             statusBounce 0.3s ease-out 0.6s both;
+}
+
+@keyframes statusBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+/* Alternative: Slide in from right side instead of left */
+/* Uncomment if you prefer right side entrance */
+
+/*
+.interactive-status {
+  transform: translateX(20%) translateY(0);
+}
+
+.module-node:hover ~ .interactive-status,
+.hub-core:hover ~ .interactive-status {
+  transform: translateX(-50%) translateY(-5px);
+  animation: statusSlideInRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes statusSlideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20%) translateY(0);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(-55%) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+  */
 
 /* Responsive Design */
 @media (max-width: 1200px) {

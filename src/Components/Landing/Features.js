@@ -54,6 +54,12 @@ const Features = () => {
 				<div className="features-grid">
 					{features.map((feature, index) => (
 						<div key={index} className="feature-card">
+							{/* Simple water droplets */}
+							<div className="droplet droplet-1"></div>
+							<div className="droplet droplet-2"></div>
+							<div className="droplet droplet-3"></div>
+							<div className="droplet droplet-4"></div>
+
 							<div className="feature-icon">{feature.icon}</div>
 							<h3>{feature.title}</h3>
 							<p>{feature.description}</p>
