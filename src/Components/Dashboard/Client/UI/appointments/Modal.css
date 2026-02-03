@@ -1,0 +1,129 @@
+/* ============================
+   OVERLAY (VERY DARK)
+============================ */
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.9);
+	backdrop-filter: blur(2px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+/* ============================
+   MODAL CONTAINER
+============================ */
+.modal {
+	width: 100%;
+	max-width: 420px;
+	background: #0b1411; /* darker than page */
+	border-radius: 18px;
+	padding: 24px;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+	animation: modalIn 0.25s ease;
+}
+
+/* ============================
+   TYPOGRAPHY
+============================ */
+.modal h3 {
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 6px;
+	color: #e7efe9;
+}
+
+.modal-sub {
+	font-size: 0.85rem;
+	line-height: 1.5;
+	color: #8fa39a;
+	margin-bottom: 20px;
+}
+
+/* ============================
+   INPUTS
+============================ */
+.modal-field {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
+
+.modal-field label {
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: #6f8379;
+	margin-bottom: 6px;
+}
+
+.modal-field input {
+	padding: 10px 12px;
+	border-radius: 10px;
+	background: #101c18;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	color: #e7efe9;
+	font-size: 0.85rem;
+}
+
+.modal-field input:focus {
+	outline: none;
+	border-color: rgba(96, 165, 250, 0.4);
+	background: #0f1a16;
+}
+
+/* ============================
+   ACTIONS
+============================ */
+.modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 22px;
+}
+
+.btn.primary {
+	background: rgba(96, 165, 250, 0.35);
+}
+
+.btn.primary:hover {
+	background: rgba(96, 165, 250, 0.5);
+}
+
+.btn.ghost {
+	background: rgba(255, 255, 255, 0.04);
+	color: #9fb4a7;
+}
+
+.btn.ghost:hover {
+	background: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================
+   DANGER VARIANT
+============================ */
+.modal.danger {
+	background: #120c0c;
+	border-color: rgba(255, 120, 120, 0.25);
+}
+
+.modal.danger .modal-sub {
+	color: #d6a3a3;
+}
+
+/* ============================
+   ANIMATION
+============================ */
+@keyframes modalIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px) scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}

@@ -1,0 +1,167 @@
+.recipe-card {
+  background: #18181f;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.recipe-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.image-wrapper {
+  height: 180px;
+  overflow: hidden;
+  position: relative; /* for badge */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.recipe-card:hover img {
+  transform: scale(1.08);
+}
+
+/* BADGES */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+  user-select: none;
+}
+
+.badge.veg {
+  background: rgba(46, 204, 113, 0.9);
+  color: #0c3b22;
+}
+
+.badge.nonveg {
+  background: rgba(231, 76, 60, 0.9);
+  color: #3a0b06;
+}
+
+.badge.beverage {
+  background: rgba(52, 152, 219, 0.9);
+  color: #041c2d;
+}
+
+/* HEART ICON TOP-RIGHT */
+.heart-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.1);
+}
+
+.heart-btn.active {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.heart-btn.active svg {
+  fill: white;
+}
+
+/* RECIPE BUTTON BELOW IMAGE, SIDE ALIGNED */
+.recipe-side-btn {
+  align-self: flex-end;
+  margin: 0.6rem 1rem 0;
+  padding: 0.45rem 0.9rem;
+
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  transition: transform 0.2s ease;
+}
+
+.recipe-side-btn:hover {
+  transform: scale(1.05);
+}
+
+/* CARD CONTENT WITH STATS PINNED AT BOTTOM */
+.card-content {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* fills remaining vertical space */
+}
+
+.card-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #b5b5bd;
+  margin-bottom: auto; /* pushes stats down */
+}
+
+/* STATS ALWAYS AT BOTTOM */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #2a2a30;
+}
+
+.stats small {
+  color: #8b8b93;
+  font-size: 0.75rem;
+}
+
+.stats p {
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* Remove hover-only card-actions */
+.card-actions {
+  display: none;
+}

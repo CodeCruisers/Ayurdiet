@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Main Section----------------------- */
+#mainSection {
+	height: 90vh;
+	width: 80vw;
+	background: linear-gradient(180deg, #12141a, #0c0d11);
+	border-radius: 16px;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+	padding: 30px !important;
+	overflow-y: auto;
+	color: #e5e7eb;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: "Exo 2", sans-serif;
+}
+
+#mainSection::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Dashbord */
+#topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mainDisplay {
+    border-radius: 12px;
+    padding: 20px;
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    margin-top: 1.5rem;
+}
+
+.mainDisplay::-webkit-scrollbar {
+    width: 6px;
+}

@@ -12,12 +12,12 @@ const Login = ({ onToggleMode }) => {
 		email: "",
 		password: "",
 	});
+
 	const [errors, setErrors] = useState({});
 	const [loading, setLoading] = useState(false);
 
 	const handleChange = (field, value) => {
 		setFormData((prev) => ({ ...prev, [field]: value }));
-		// Clear error when user starts typing
 		if (errors[field]) {
 			setErrors((prev) => ({ ...prev, [field]: "" }));
 		}
@@ -26,17 +26,13 @@ const Login = ({ onToggleMode }) => {
 	const validateForm = () => {
 		const newErrors = {};
 
-		if (!formData.email) {
-			newErrors.email = "Email is required";
-		} else if (!validateEmail(formData.email)) {
+		if (!formData.email) newErrors.email = "Email is required";
+		else if (!validateEmail(formData.email))
 			newErrors.email = "Please enter a valid email address";
-		}
 
-		if (!formData.password) {
-			newErrors.password = "Password is required";
-		} else if (!validatePassword(formData.password)) {
+		if (!formData.password) newErrors.password = "Password is required";
+		else if (!validatePassword(formData.password))
 			newErrors.password = "Password must be at least 6 characters long";
-		}
 
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
@@ -44,30 +40,24 @@ const Login = ({ onToggleMode }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
 		if (!validateForm()) return;
 
 		setLoading(true);
 		const result = await login(formData.email, formData.password);
 		setLoading(false);
 
-		if (!result.success) {
-			setErrors({ submit: result.error });
-		}
+		if (!result.success) setErrors({ submit: result.error });
 	};
 
 	return (
 		<AuthLayout
-			title="Welcome Back"
-			subtitle="Sign in to your AyurDiet account"
+			title="Welcome back"
+			subtitle="Sign in to your AyurDiet workspace"
 		>
-			<form onSubmit={handleSubmit} className="auth-form">
-				<h2>Sign In</h2>
-				<p className="auth-subtitle">
-					Enter your credentials to access your dashboard
-				</p>
-
-				{errors.submit && <div className="error-banner">{errors.submit}</div>}
+			<form onSubmit={handleSubmit} className="glass-auth-form">
+				{errors.submit && (
+					<div className="glass-error-banner">{errors.submit}</div>
+				)}
 
 				<InputField
 					label="Email Address"
@@ -91,12 +81,12 @@ const Login = ({ onToggleMode }) => {
 					icon="🔒"
 				/>
 
-				<div className="auth-options">
-					<label className="remember-me">
+				<div className="login-options">
+					<label className="remember-option">
 						<input type="checkbox" />
 						<span>Remember me</span>
 					</label>
-					<a href="#forgot-password" className="forgot-password">
+					<a href="#forgot-password" className="forgot-link">
 						Forgot password?
 					</a>
 				</div>
@@ -105,25 +95,23 @@ const Login = ({ onToggleMode }) => {
 					Sign In
 				</Button>
 
-				<div className="auth-divider">
+				<div className="glass-divider">
 					<span>Or continue with</span>
 				</div>
 
-				<div className="social-auth">
-					<button type="button" className="social-btn google-btn">
-						<span>🔍</span>
-						Google
+				<div className="modern-social">
+					<button type="button" className="social-btn">
+						<span>🔍</span> Google
 					</button>
-					<button type="button" className="social-btn linkedin-btn">
-						<span>💼</span>
-						LinkedIn
+					<button type="button" className="social-btn">
+						<span>💼</span> LinkedIn
 					</button>
 				</div>
 
-				<div className="auth-switch">
-					Don't have an account?{" "}
-					<button type="button" onClick={onToggleMode} className="switch-link">
-						Sign up now
+				<div className="switch-auth">
+					Don&apos;t have an account?{" "}
+					<button type="button" onClick={onToggleMode} className="switch-btn">
+						Sign up
 					</button>
 				</div>
 			</form>

@@ -88,15 +88,10 @@ const Register = ({ onToggleMode }) => {
 
 	return (
 		<AuthLayout
-			title="Start Your Ayurvedic Journey"
-			subtitle="Join AyurDiet as a Client or Practitioner"
+			title="Start your Ayurvedic journey"
+			subtitle="Create your AyurDiet account as a client or practitioner"
 		>
-			<form onSubmit={handleSubmit} className="auth-form">
-				<div className="form-header">
-					<h2>Join AyurDiet</h2>
-					<p>Create your account to get started</p>
-				</div>
-
+			<form onSubmit={handleSubmit} className="glass-auth-form">
 				{errors.submit && <div className="error-banner">{errors.submit}</div>}
 
 				{/* Role Selection */}
@@ -183,7 +178,7 @@ const Register = ({ onToggleMode }) => {
 					type="tel"
 					value={formData.phone}
 					onChange={(e) => handleChange("phone", e.target.value)}
-					placeholder="+1 (555) 123-4567"
+					placeholder="+91 98765 43210"
 					icon="📞"
 				/>
 
@@ -208,32 +203,6 @@ const Register = ({ onToggleMode }) => {
 					required
 					icon="🔒"
 				/>
-
-				<div className="role-benefits">
-					{formData.role === "client" && (
-						<div className="benefits-list">
-							<h4>As a Client, you'll get:</h4>
-							<ul>
-								<li>✓ Personalized diet plans</li>
-								<li>✓ Progress tracking</li>
-								<li>✓ Direct messaging with dietitians</li>
-								<li>✓ Health goal setting</li>
-							</ul>
-						</div>
-					)}
-					{formData.role === "dietitian" && (
-						<div className="benefits-list">
-							<h4>As a Dietitian, you'll get:</h4>
-							<ul>
-								<li>✓ Client management tools</li>
-								<li>✓ Diet plan creation</li>
-								<li>✓ Practice analytics</li>
-								<li>✓ Revenue tracking</li>
-								<li>✓ Customizable practice settings</li>
-							</ul>
-						</div>
-					)}
-				</div>
 
 				<div className="terms-agreement">
 					<label className="terms-label">

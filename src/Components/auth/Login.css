@@ -1,122 +1,194 @@
-.auth-form {
+/* ============================
+   LOGIN FORM
+============================ */
+.glass-auth-form {
   width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(247, 243, 233, 0.98),
+    rgba(255, 255, 255, 0.98)
+  );
+  border-radius: 20px;
+  padding: 26px 22px 24px;
+  box-shadow: 0 16px 40px rgba(92, 68, 51, 0.18);
+  border: 1px solid rgba(200, 198, 195, 0.9);
+  animation: fadeInLogin 0.8s ease forwards;
 }
 
-.auth-form h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: var(--primary-green);
-  text-align: center;
+/* Tween from bottom for form itself */
+@keyframes fadeInLogin {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.auth-subtitle {
-  text-align: center;
-  color: var(--text-light);
-  margin-bottom: 30px;
+.login-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: left;
+  color: #333333;
+  margin-bottom: 4px;
 }
 
-.error-banner {
-  background: #fed7d7;
-  color: #c53030;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 1px solid #feb2b2;
+.login-subtitle {
+  text-align: left;
+  color: #6d4c41;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
 }
 
-.auth-options {
+/* ----------------------------
+   ERROR BANNER
+----------------------------- */
+.glass-error-banner {
+  background: rgba(255, 230, 230, 0.95);
+  color: #b12929;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 153, 153, 0.8);
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+/* ----------------------------
+   REMEMBER + FORGOT
+----------------------------- */
+.login-options {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  gap: 12px;
+  font-size: 0.9rem;
 }
 
-.remember-me {
+.remember-option {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #5c6f63;
   cursor: pointer;
-  color: var(--text-light);
 }
 
-.remember-me input {
-  width: 16px;
-  height: 16px;
+.remember-option input {
+  width: 15px;
+  height: 15px;
+  accent-color: #558b2f;
 }
 
-.forgot-password {
-  color: var(--primary-green);
+.forgot-link {
+  color: #da8a1d;
+  font-weight: 600;
   text-decoration: none;
-  font-weight: 500;
 }
 
-.forgot-password:hover {
+.forgot-link:hover {
   text-decoration: underline;
 }
 
-.auth-divider {
+/* ----------------------------
+   DIVIDER
+----------------------------- */
+.glass-divider {
   text-align: center;
-  margin: 30px 0;
+  margin: 18px 0 16px;
   position: relative;
-  color: var(--text-light);
+  color: #6d4c41;
+  font-size: 0.8rem;
 }
 
-.auth-divider::before {
-  content: '';
+.glass-divider::before {
+  content: "";
   position: absolute;
-  top: 50%;
+  height: 1px;
+  background: rgba(200, 198, 195, 0.8);
   left: 0;
   right: 0;
-  height: 1px;
-  background: #e2e8f0;
+  top: 50%;
 }
 
-.auth-divider span {
-  background: var(--white);
-  padding: 0 15px;
+.glass-divider span {
   position: relative;
+  padding: 0 10px;
+  background: rgba(247, 243, 233, 0.96);
 }
 
-.social-auth {
+/* ----------------------------
+   SOCIAL BUTTONS
+----------------------------- */
+.modern-social {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-bottom: 30px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .social-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  background: var(--white);
+  background: #ffffff;
+  border: 1px solid #c8c6c3;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.social-btn span {
+  font-size: 1.1rem;
 }
 
 .social-btn:hover {
-  border-color: var(--primary-green);
+  border-color: #558b2f;
+  box-shadow: 0 10px 24px rgba(85, 139, 47, 0.22);
   transform: translateY(-1px);
 }
 
-.auth-switch {
+/* ----------------------------
+   SWITCH AUTH LINK
+----------------------------- */
+.switch-auth {
   text-align: center;
-  color: var(--text-light);
+  color: #5c4433;
+  font-size: 0.9rem;
+  margin-top: 6px;
 }
 
-.switch-link {
-  background: none;
+.switch-btn {
   border: none;
-  color: var(--primary-green);
-  font-weight: 600;
-  cursor: pointer;
+  background: none;
+  color: #558b2f;
+  font-weight: 700;
   text-decoration: underline;
+  cursor: pointer;
+  padding: 0 2px;
 }
 
-.switch-link:hover {
-  color: var(--light-green);
+.switch-btn:hover {
+  color: #6aa84f;
+}
+
+/* ----------------------------
+   RESPONSIVE
+----------------------------- */
+@media (max-width: 480px) {
+  .glass-auth-form {
+    padding: 20px 16px 18px;
+    border-radius: 18px;
+  }
+
+  .login-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

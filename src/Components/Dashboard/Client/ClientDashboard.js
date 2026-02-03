@@ -1,12 +1,17 @@
-import React from 'react'
+import { useState } from "react";
+import "./ClientDashboard.css";
+import MainSection from "./MainSection";
+import Sidebar from "./Sidebar";
 
 const ClientDashboard = () => {
-  return (
-		<>
-			<div>Sidebar</div>
-			<div>Dashboard</div>
-		</>
-	);
-}
+	const [activeView, setActiveView] = useState("dashboard");
 
-export default ClientDashboard
+	return (
+		<div id="clientDashboard">
+			<Sidebar activeView={activeView} setActiveView={setActiveView} />
+			<MainSection activeView={activeView} />
+		</div>
+	);
+};
+
+export default ClientDashboard;

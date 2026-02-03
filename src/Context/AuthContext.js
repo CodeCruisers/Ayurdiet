@@ -84,21 +84,21 @@ const mockLoginAPI = (email, password) => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			const users = {
-				"client@ayursaas.com": {
+				"client@ayurdiet.com": {
 					id: 1,
 					name: "John Client",
 					email: "client@ayursaas.com",
 					role: "client",
 					joinDate: "2024-01-15",
 				},
-				"dietitian@ayursaas.com": {
+				"dietitian@ayurdiet.com": {
 					id: 2,
 					name: "Dr. Anika Sharma",
 					email: "dietitian@ayursaas.com",
 					role: "dietitian",
 					joinDate: "2023-01-15",
 				},
-				"admin@ayursaas.com": {
+				"admin@ayurdiet.com": {
 					id: 3,
 					name: "Admin User",
 					email: "admin@ayursaas.com",

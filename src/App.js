@@ -10,6 +10,7 @@ import { AuthProvider, useAuth } from "./Context/AuthContext";
 import LandingPage from "./Pages/LandingPage";
 import AuthPage from "./Pages/AuthPage";
 import DashboardRouter from "./Components/Dashboard/DashboardRouter";
+import ErrorPage from "./Pages/ErrorPage";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -69,7 +70,7 @@ function AppContent() {
 
 					{/* Protected routes */}
 					<Route
-						path="/dashboard"
+						path="/dashboard/*"
 						element={
 							<ProtectedRoute>
 								<DashboardRouter />
@@ -78,7 +79,7 @@ function AppContent() {
 					/>
 
 					{/* Catch all route */}
-					<Route path="*" element={<Navigate to="/" />} />
+					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</div>
 		</Router>

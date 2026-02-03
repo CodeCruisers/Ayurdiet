@@ -71,8 +71,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    url('../../Images/droplet.jpg');
+  box-shadow: 0 0 20px rgb(0, 0, 0);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

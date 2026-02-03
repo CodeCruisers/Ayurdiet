@@ -108,3 +108,9 @@ body {
   font-size: 1.2rem;
   opacity: 0.9;
 }
+
+::selection {
+  background-color: var(--primary-green);
+  color: var(--white);
+  border-radius: 15px;
+}

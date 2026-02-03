@@ -1,0 +1,147 @@
+/* ====================================
+   PAGE WRAPPER
+==================================== */
+.error-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at top, #0f1512, #040605);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* ====================================
+   FLOATING HERBAL GLOW
+==================================== */
+.error-floating {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.25;
+  animation: floatBG 14s infinite ease-in-out;
+}
+
+.el-a {
+  width: 300px;
+  height: 300px;
+  background: #2f7a66;   /* deep herbal teal */
+  top: 10%;
+  left: 12%;
+}
+
+.el-b {
+  width: 380px;
+  height: 380px;
+  background: #6b5638;   /* dark sandalwood */
+  bottom: 12%;
+  right: 10%;
+  animation-delay: 3s;
+}
+
+.el-c {
+  width: 240px;
+  height: 240px;
+  background: #4b8b75;   /* cool sage */
+  top: 55%;
+  left: 70%;
+  animation-delay: 2s;
+}
+
+@keyframes floatBG {
+  0% { transform: translateY(0); opacity: 0.25; }
+  50% { transform: translateY(-50px); opacity: 0.4; }
+  100% { transform: translateY(0); opacity: 0.25; }
+}
+
+/* ====================================
+   GLASS CARD (herbal dark-tech)
+==================================== */
+.error-card {
+  width: clamp(280px, 90vw, 480px);
+  background: rgba(10, 16, 14, 0.88);
+  backdrop-filter: blur(24px);
+  border-radius: 28px;
+  padding: 40px 32px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(120, 200, 170, 0.08);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+  animation: fadeInCard 1s ease forwards;
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ====================================
+   404
+==================================== */
+.error-404 {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 25px);
+  margin-bottom: 10px;
+}
+
+.digit {
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 800;
+  color: #a8d5ba; /* herbal glow */
+  text-shadow: 0 0 8px rgba(168, 213, 186, 0.3),
+               0 0 20px rgba(80, 200, 160, 0.15);
+  animation: popDigit 1.3s ease forwards;
+}
+
+.zero {
+  color: #c9b27d; /* turmeric */
+  text-shadow: 0 0 8px rgba(201, 178, 125, 0.3),
+               0 0 20px rgba(160, 140, 90, 0.15);
+  animation-delay: 0.2s;
+}
+
+@keyframes popDigit {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* ====================================
+   TEXT
+==================================== */
+.error-title {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 600;
+  color: #e7efe9;
+  margin-bottom: 10px;
+}
+
+.error-desc {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #9fb4a7;
+  margin-bottom: 25px;
+}
+
+/* ====================================
+   BUTTON
+==================================== */
+.error-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #3f8f77, #8c7a4e);
+  color: #050807;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 25px rgba(63,143,119,0.35);
+}
+
+.error-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(140,122,78,0.5);
+}

@@ -9,7 +9,7 @@ const Pricing = () => {
 			period: "month",
 			description: "For Solo Ayurvedic Dietitians",
 			features: [
-				"Client Management for up to 50 clients",
+				"Client Management (50 clients)",
 				"Basic Diet Planner",
 				"Core Ayurvedic Analysis",
 				"Appointment Scheduling",
@@ -22,9 +22,9 @@ const Pricing = () => {
 			name: "The Pro",
 			price: "$59",
 			period: "month",
-			description: "Most Popular - For Growing Practices",
+			description: "Most Popular — For Growing Practices",
 			features: [
-				"Everything in The Practitioner",
+				"Everything in Practitioner",
 				"Advanced Nutrient Dashboard",
 				"Client Portal",
 				"Automated Follow-ups",
@@ -40,12 +40,12 @@ const Pricing = () => {
 			period: "tailored",
 			description: "For Multi-Practitioner Clinics & Institutions",
 			features: [
-				"Everything in The Pro",
+				"Everything in Pro",
 				"Multi-user logins",
-				"Advanced reporting",
-				"Priority support",
-				"Custom onboarding",
-				"Dedicated account manager",
+				"Advanced Reporting",
+				"Priority Support",
+				"Custom Onboarding",
+				"Dedicated Manager",
 			],
 			cta: "Contact Sales",
 			popular: false,
@@ -53,39 +53,43 @@ const Pricing = () => {
 	];
 
 	return (
-		<section id="pricing" className="section pricing-section">
+		<section id="pricing-section">
 			<div className="container">
 				<h2 className="section-title">Choose Your Plan. No Hidden Fees.</h2>
 				<p className="section-subtitle">
 					Start with a 14-day free trial. No credit card required.
 				</p>
-				<div className="pricing-grid">
+
+				<div id="pricing-grid">
 					{plans.map((plan, index) => (
 						<div
+							id="pricing-card"
 							key={index}
-							className={`pricing-card ${plan.popular ? "popular" : ""}`}
+							className={plan.popular ? "popular" : ""}
 						>
-							{plan.popular && (
-								<div className="popular-badge">Most Popular</div>
-							)}
-							<div className="plan-header">
+							{plan.popular && <div id="popular-badge">Most Popular</div>}
+
+							<div id="plan-header">
 								<h3>{plan.name}</h3>
-								<div className="plan-price">
+								<div id="plan-price">
 									<span className="price">{plan.price}</span>
 									<span className="period">/{plan.period}</span>
 								</div>
-								<p className="plan-description">{plan.description}</p>
+								<p id="plan-description">{plan.description}</p>
 							</div>
-							<ul className="plan-features">
+
+							<ul id="plan-features">
 								{plan.features.map((feature, featureIndex) => (
 									<li key={featureIndex}>{feature}</li>
 								))}
 							</ul>
+
 							<a
 								href="#trial"
+								id="plan-cta"
 								className={`btn ${
 									plan.popular ? "btn-primary" : "btn-secondary"
-								} plan-cta`}
+								}`}
 							>
 								{plan.cta}
 							</a>
