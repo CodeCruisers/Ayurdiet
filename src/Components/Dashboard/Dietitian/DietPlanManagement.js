@@ -8,9 +8,9 @@ const DietPlanManagement = ({ plans, className = "" }) => {
 	};
 
 	return (
-		<div className={`diet-plan-management dashboard-card ${className}`}>
-			<div className="section-header">
-				<h2>Active Diet Plans</h2>
+		<div className={`diet-plan-management ${className}`}>
+			<div className="flex justify-between items-center mb-4 max-[768px]:flex-col max-[768px]:gap-3 max-[768px]:items-stretch">
+				<h2 className="m-0 flex-1 text-[#2c3e50] text-[1.25rem] font-semibold">Active Diet Plans</h2>
 				<button className="create-plan-btn">+ Create Plan</button>
 			</div>
 

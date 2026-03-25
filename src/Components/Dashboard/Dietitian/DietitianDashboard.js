@@ -11,7 +11,6 @@ import PracticeAnalytics from "./PracticeAnalytics";
 import QuickActions from "../../Common/QuickActions";
 import { dietitianDashboardService } from "../../../utils/mockDataService";
 import LoadingSpinner from "../../Common/LoadingSpinner";
-import "./DietitianDashboard.css";
 
 const DietitianDashboard = () => {
 	const { user } = useAuth();
@@ -35,7 +34,7 @@ const DietitianDashboard = () => {
 
 	if (loading) {
 		return (
-			<div className="dashboard-loading">
+			<div className="flex justify-center items-center h-[50vh] flex-col gap-4">
 				<LoadingSpinner
 					fullScreen
 					text="Loading your practice dashboard..."
@@ -47,8 +46,8 @@ const DietitianDashboard = () => {
 
 	if (!dashboardData) {
 		return (
-			<div className="dashboard-error">
-				<p>Failed to load dashboard data</p>
+			<div className="flex justify-center items-center h-[50vh] flex-col gap-4">
+				<p className="text-[#6c757d] text-[1.1rem]">Failed to load dashboard data</p>
 			</div>
 		);
 	}
@@ -63,45 +62,45 @@ const DietitianDashboard = () => {
 	} = dashboardData;
 
 	return (
-		<div className="dietitian-dashboard">
+		<div className="p-5 bg-[#f8f9fa] min-h-[100vh] max-[768px]:p-4">
 			<DashboardHeader
 				title="My Practice"
 				user={user}
 				welcomeMessage={`Welcome back, ${user.name}! ${practiceOverview.message}`}
 			/>
 
-			<div className="dashboard-content">
+			<div className="max-w-[1400px] mx-auto">
 				{/* Practice Stats */}
-				<div className="stats-section">
+				<div className="mb-6">
 					<StatsGrid stats={stats} />
 				</div>
 
-				<div className="dashboard-grid">
+				<div className="grid grid-cols-[1fr_400px] max-[1200px]:grid-cols-1 gap-6 items-start">
 					{/* Left Column */}
-					<div className="left-column">
+					<div className="flex flex-col gap-5">
 						<PracticeOverview
 							data={practiceOverview}
-							className="dashboard-card"
+							className="bg-white rounded-[12px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#e9ecef] max-[768px]:p-4"
 						/>
 
-						<ClientManagement clients={clients} className="dashboard-card" />
+						<ClientManagement clients={clients} className="bg-white rounded-[12px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#e9ecef] max-[768px]:p-4" />
 
 						<DietPlanManagement
 							plans={activePlans}
-							className="dashboard-card"
+							className="bg-white rounded-[12px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#e9ecef] max-[768px]:p-4"
 						/>
 					</div>
 
 					{/* Right Column */}
-					<div className="right-column">
+					<div className="flex flex-col gap-5">
 						<AppointmentSchedule
 							appointments={appointments}
-							className="dashboard-card"
+							className="bg-white rounded-[12px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#e9ecef] max-[768px]:p-4"
 						/>
 
 						<PracticeAnalytics
 							analytics={analytics}
-							className="dashboard-card"
+							className="bg-white rounded-[12px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#e9ecef] max-[768px]:p-4"
 						/>
 
 						<QuickActions
@@ -111,7 +110,7 @@ const DietitianDashboard = () => {
 								{ label: "Schedule", icon: "📅", path: "/schedule" },
 								{ label: "Reports", icon: "📊", path: "/reports" },
 							]}
-							className="dashboard-card"
+							className="bg-white rounded-[12px] p-5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#e9ecef] max-[768px]:p-4"
 						/>
 					</div>
 				</div>

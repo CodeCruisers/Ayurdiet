@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./SettingsModal.css";
 
 const SettingsModal = ({ onClose }) => {
 	const [settings, setSettings] = useState({
@@ -22,21 +21,26 @@ const SettingsModal = ({ onClose }) => {
 		setSettings({ ...settings, [key]: value });
 	};
 
+	const getToggleClass = (isOn) => {
+		return `w-[44px] h-[22px] rounded-full relative cursor-pointer before:content-[''] before:w-[18px] before:h-[18px] before:absolute before:top-[2px] before:rounded-full before:transition-all before:duration-[250ms] ${isOn ? "bg-blue-500 before:left-[24px] before:bg-white" : "bg-gray-800 before:left-[2px] before:bg-gray-500"}`;
+	};
+
 	return (
-		<div className="settings-overlay">
-			<div className="settings-modal">
-				<div className="settings-header">
-					<h2>Settings</h2>
-					<button onClick={onClose}>✕</button>
+		<div className="fixed inset-0 bg-black/75 backdrop-blur-[10px] flex justify-center items-center z-[1000]">
+			<div className="w-[min(90vw,520px)] max-h-[85vh] bg-gradient-to-b from-[#0f1216] to-[#090b0f] rounded-[20px] flex flex-col text-gray-200 border border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.9)]">
+				<div className="p-5 md:px-6 md:py-5 flex justify-between items-center border-b border-white/5">
+					<h2 className="m-0">Settings</h2>
+					<button className="bg-transparent text-gray-400 border-none text-[1.3rem] cursor-pointer" onClick={onClose}>✕</button>
 				</div>
 
-				<div className="settings-body">
+				<div className="p-5 overflow-y-auto [&::-webkit-scrollbar]:w-2">
 					{/* Interface */}
-					<div className="settings-section">
-						<h4>Interface</h4>
-						<div className="setting-row">
-							<span>Theme</span>
+					<div className="mb-7">
+						<h4 className="text-[0.8rem] text-gray-400 mb-3 tracking-[1px] uppercase m-0">Interface</h4>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Theme</span>
 							<select
+								className="bg-[#1a1f26] text-gray-200 border-none px-3 py-2 rounded-lg outline-none"
 								value={settings.theme}
 								onChange={(e) => update("theme", e.target.value)}
 							>
@@ -44,21 +48,22 @@ const SettingsModal = ({ onClose }) => {
 								<option>Light</option>
 							</select>
 						</div>
-						<div className="setting-row">
-							<span>Compact Layout</span>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Compact Layout</span>
 							<div
 								onClick={() => toggle("compactLayout")}
-								className={`toggle ${settings.compactLayout ? "on" : ""}`}
+								className={getToggleClass(settings.compactLayout)}
 							/>
 						</div>
 					</div>
 
 					{/* Regional */}
-					<div className="settings-section">
-						<h4>Regional</h4>
-						<div className="setting-row">
-							<span>Language</span>
+					<div className="mb-7">
+						<h4 className="text-[0.8rem] text-gray-400 mb-3 tracking-[1px] uppercase m-0">Regional</h4>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Language</span>
 							<select
+								className="bg-[#1a1f26] text-gray-200 border-none px-3 py-2 rounded-lg outline-none"
 								value={settings.language}
 								onChange={(e) => update("language", e.target.value)}
 							>
@@ -66,9 +71,10 @@ const SettingsModal = ({ onClose }) => {
 								<option>Hindi</option>
 							</select>
 						</div>
-						<div className="setting-row">
-							<span>Time Zone</span>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Time Zone</span>
 							<select
+								className="bg-[#1a1f26] text-gray-200 border-none px-3 py-2 rounded-lg outline-none"
 								value={settings.timezone}
 								onChange={(e) => update("timezone", e.target.value)}
 							>
@@ -80,25 +86,26 @@ const SettingsModal = ({ onClose }) => {
 					</div>
 
 					{/* System */}
-					<div className="settings-section">
-						<h4>System</h4>
-						<div className="setting-row">
-							<span>Auto Save</span>
+					<div className="mb-7">
+						<h4 className="text-[0.8rem] text-gray-400 mb-3 tracking-[1px] uppercase m-0">System</h4>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Auto Save</span>
 							<div
 								onClick={() => toggle("autoSave")}
-								className={`toggle ${settings.autoSave ? "on" : ""}`}
+								className={getToggleClass(settings.autoSave)}
 							/>
 						</div>
-						<div className="setting-row">
-							<span>Sound Effects</span>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Sound Effects</span>
 							<div
 								onClick={() => toggle("sound")}
-								className={`toggle ${settings.sound ? "on" : ""}`}
+								className={getToggleClass(settings.sound)}
 							/>
 						</div>
-						<div className="setting-row">
-							<span>Session Timeout</span>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Session Timeout</span>
 							<select
+								className="bg-[#1a1f26] text-gray-200 border-none px-3 py-2 rounded-lg outline-none"
 								value={settings.sessionTimeout}
 								onChange={(e) => update("sessionTimeout", e.target.value)}
 							>
@@ -110,30 +117,30 @@ const SettingsModal = ({ onClose }) => {
 					</div>
 
 					{/* Privacy */}
-					<div className="settings-section">
-						<h4>Privacy</h4>
-						<div className="setting-row">
-							<span>Email Updates</span>
+					<div className="mb-7">
+						<h4 className="text-[0.8rem] text-gray-400 mb-3 tracking-[1px] uppercase m-0">Privacy</h4>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Email Updates</span>
 							<div
 								onClick={() => toggle("emailUpdates")}
-								className={`toggle ${settings.emailUpdates ? "on" : ""}`}
+								className={getToggleClass(settings.emailUpdates)}
 							/>
 						</div>
-						<div className="setting-row">
-							<span>Data Sharing</span>
+						<div className="flex justify-between items-center px-[14px] py-3 bg-white/5 rounded-xl mb-2.5">
+							<span className="text-[0.95rem]">Data Sharing</span>
 							<div
 								onClick={() => toggle("dataSharing")}
-								className={`toggle ${settings.dataSharing ? "on" : ""}`}
+								className={getToggleClass(settings.dataSharing)}
 							/>
 						</div>
 					</div>
 				</div>
 
-				<div className="settings-footer">
-					<button className="cancel-btn" onClick={onClose}>
+				<div className="px-6 py-[18px] flex justify-between border-t border-white/5">
+					<button className="bg-transparent border border-white/20 text-gray-400 px-5 py-2.5 rounded-lg cursor-pointer" onClick={onClose}>
 						Cancel
 					</button>
-					<button className="save-btn" onClick={onClose}>Save Changes</button>
+					<button className="bg-blue-500 border-none text-white px-6 py-2.5 rounded-lg cursor-pointer" onClick={onClose}>Save Changes</button>
 				</div>
 			</div>
 		</div>

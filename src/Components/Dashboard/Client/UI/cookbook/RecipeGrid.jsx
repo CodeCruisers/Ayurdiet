@@ -1,5 +1,4 @@
 import RecipeCard from "./RecipeCard";
-import "./Cookbook.css";
 
 /**
  * Displays a grid of recipe cards.
@@ -7,11 +6,11 @@ import "./Cookbook.css";
  */
 export default function RecipeGrid({ recipes = [] }) {
 	if (recipes.length === 0) {
-		return <p className="no-recipes">No recipes found.</p>;
+		return <p className="">No recipes found.</p>;
 	}
 
 	return (
-		<section className="recipe-grid">
+		<section className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8">
 			{recipes.map((recipe) => (
 				<RecipeCard key={recipe.id} recipe={recipe} />
 			))}

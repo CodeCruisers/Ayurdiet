@@ -13,8 +13,8 @@ const PracticeAnalytics = ({ analytics, className = "" }) => {
 	};
 
 	return (
-		<div className={`practice-analytics dashboard-card ${className}`}>
-			<h2>Practice Analytics</h2>
+		<div className={`practice-analytics ${className}`}>
+			<h2 className="m-[0_0_16px_0] text-[#2c3e50] text-[1.25rem] font-semibold">Practice Analytics</h2>
 
 			<div className="analytics-grid">
 				<div className="analytics-card">

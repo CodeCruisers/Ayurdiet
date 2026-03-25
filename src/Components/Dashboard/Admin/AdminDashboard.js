@@ -9,7 +9,6 @@ import FinancialOverview from "./FinancialOverview";
 import SystemHealth from "./SystemHealth";
 import QuickActions from "../../Common/QuickActions";
 import { adminDashboardService } from "../../../utils/mockDataService";
-import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
 	const { user } = useAuth();
@@ -39,7 +38,7 @@ const AdminDashboard = () => {
 
 	if (loading || !dashboardData) {
 		return (
-			<div className="admin-dashboard-loading">
+			<div className="flex flex-col items-center justify-center min-h-[400px] gap-5 text-slate-500">
 				<div className="loading-spinner-large"></div>
 				<p>Loading platform dashboard...</p>
 			</div>
@@ -56,8 +55,10 @@ const AdminDashboard = () => {
 		recentActivity,
 	} = dashboardData;
 
+	const dashboardCardClass = "bg-white rounded-2xl p-[15px] md:p-5 xl:p-[25px] shadow-[0_2px_10px_rgba(0,0,0,0.08)] border border-slate-200 transition-all duration-300 hover:shadow-[0_4px_20px_rgba(0,0,0,0.12)] hover:-translate-y-[2px]";
+
 	return (
-		<div className="admin-dashboard">
+		<div className="min-h-screen bg-slate-50 p-2.5 md:p-[15px] xl:p-5">
 			<DashboardHeader
 				title="Platform Administration"
 				user={user}
@@ -66,39 +67,39 @@ const AdminDashboard = () => {
 				refreshLoading={loading}
 			/>
 
-			<div className="admin-dashboard-content">
+			<div className="max-w-[1400px] mx-auto">
 				{/* Platform Stats */}
-				<div className="stats-section">
+				<div className="mb-[30px]">
 					<StatsGrid stats={stats} />
 				</div>
 
-				<div className="admin-dashboard-grid">
+				<div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-5 xl:gap-[25px]">
 					{/* Left Column */}
-					<div className="admin-left-column">
+					<div className="flex flex-col gap-5 xl:gap-[25px]">
 						<PlatformOverview
 							data={platformOverview}
-							className="admin-dashboard-card"
+							className={dashboardCardClass}
 						/>
 
-						<UserManagement users={users} className="admin-dashboard-card" />
+						<UserManagement users={users} className={dashboardCardClass} />
 
 						<ContentManagement
 							content={content}
-							className="admin-dashboard-card"
+							className={dashboardCardClass}
 						/>
 					</div>
 
 					{/* Right Column */}
-					<div className="admin-right-column">
+					<div className="flex flex-col gap-5 xl:gap-[25px]">
 						<FinancialOverview
 							financials={financials}
-							className="admin-dashboard-card"
+							className={dashboardCardClass}
 						/>
 
 						<SystemHealth
 							system={systemHealth}
 							recentActivity={recentActivity}
-							className="admin-dashboard-card"
+							className={dashboardCardClass}
 						/>
 
 						<QuickActions
@@ -128,7 +129,7 @@ const AdminDashboard = () => {
 									color: "primary",
 								},
 							]}
-							className="admin-dashboard-card"
+							className={dashboardCardClass}
 						/>
 					</div>
 				</div>

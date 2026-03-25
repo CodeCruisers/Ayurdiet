@@ -1,5 +1,5 @@
 import React from "react";
-import "./Challenge.css";
+import heroBg from "../../Images/background.jpg";
 
 const Challenge = () => {
 	const painPoints = [
@@ -42,17 +42,17 @@ const Challenge = () => {
 	];
 
 	return (
-		<section className="section challenge-section">
+		<section className="section bg-center bg-no-repeat bg-cover" style={{ backgroundImage: `url(${heroBg})` }}>
 			<div className="container">
-				<h2 className="section-title">
+				<h2 className="section-title text-center text-[2rem] mb-10 font-[800] text-[#084d1d] [text-shadow:1px_1px_2px_rgba(167,167,167,0.726)]">
 					Are You Juggling Too Much in Your Practice?
 				</h2>
-				<div className="pain-points-grid">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					{painPoints.map((point, index) => (
-						<div key={index} className="pain-point-card">
-							<div className="pain-point-icon">{point.icon}</div>
-							<h3>{point.title}</h3>
-							<p>{point.description}</p>
+						<div key={index} className="text-center py-10 px-[30px] bg-[#ffffff88] rounded-[15px] border border-[#e6e6e6] transition-transform duration-300 ease backdrop-blur-[8px] hover:-translate-y-[5px] hover:shadow-[0_5px_15px_rgba(0,0,0,0.562)]">
+							<div className="text-[3rem] mb-5">{point.icon}</div>
+							<h3 className="text-[1.3rem] mb-[15px] text-[#2d5a27]">{point.title}</h3>
+							<p className="text-[#666] leading-[1.6]">{point.description}</p>
 						</div>
 					))}
 				</div>

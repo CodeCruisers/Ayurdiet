@@ -4,8 +4,8 @@ import React from "react";
 
 const PracticeOverview = ({ data, className = "" }) => {
 	return (
-		<div className={`practice-overview dashboard-card ${className}`}>
-			<h2>Practice Overview</h2>
+		<div className={`practice-overview ${className}`}>
+			<h2 className="m-[0_0_16px_0] text-[#2c3e50] text-[1.25rem] font-semibold">Practice Overview</h2>
 			<div className="overview-content">
 				<div className="overview-message">
 					<p>{data.message}</p>

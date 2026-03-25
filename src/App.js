@@ -5,7 +5,6 @@ import {
 	Route,
 	Navigate,
 } from "react-router-dom";
-import "./App.css";
 import { AuthProvider, useAuth } from "./Context/AuthContext";
 import LandingPage from "./Pages/LandingPage";
 import AuthPage from "./Pages/AuthPage";
@@ -18,9 +17,9 @@ const ProtectedRoute = ({ children }) => {
 
 	if (loading) {
 		return (
-			<div className="loading-screen">
-				<div className="loading-spinner"></div>
-				<p>Loading AyurDiet...</p>
+			<div className="flex flex-col items-center justify-center min-h-[100vh] bg-gradient-to-br from-primary-green to-light-green text-white">
+				<div className="w-[50px] h-[50px] border-4 border-white/30 border-t-white rounded-[50%] animate-[spin_1s_linear_infinite] mb-5"></div>
+				<p className="text-[1.2rem] opacity-90">Loading AyurDiet...</p>
 			</div>
 		);
 	}
@@ -34,9 +33,9 @@ const PublicRoute = ({ children }) => {
 
 	if (loading) {
 		return (
-			<div className="loading-screen">
-				<div className="loading-spinner"></div>
-				<p>Loading AyurDiet...</p>
+			<div className="flex flex-col items-center justify-center min-h-[100vh] bg-gradient-to-br from-primary-green to-light-green text-white">
+				<div className="w-[50px] h-[50px] border-4 border-white/30 border-t-white rounded-[50%] animate-[spin_1s_linear_infinite] mb-5"></div>
+				<p className="text-[1.2rem] opacity-90">Loading AyurDiet...</p>
 			</div>
 		);
 	}

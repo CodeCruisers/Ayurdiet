@@ -17,9 +17,9 @@ const ClientManagement = ({ clients, className = "" }) => {
 	};
 
 	return (
-		<div className={`client-management dashboard-card ${className}`}>
-			<div className="section-header">
-				<h2>Client Management</h2>
+		<div className={`client-management ${className}`}>
+			<div className="flex justify-between items-center mb-4 max-[768px]:flex-col max-[768px]:gap-3 max-[768px]:items-stretch">
+				<h2 className="m-0 flex-1 text-[#2c3e50] text-[1.25rem] font-semibold">Client Management</h2>
 				<button className="view-all-btn">View All</button>
 			</div>
 
