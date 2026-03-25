@@ -1,155 +1,94 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Context/AuthContext";
-import logo from "../../../Images/client.jpg";
 import SettingsModal from "./SettingsModal";
 
 const Sidebar = ({ activeView, setActiveView }) => {
 	const { logout } = useAuth();
 	const navigate = useNavigate();
 	const [showConfirm, setShowConfirm] = useState(false);
-
 	const [showSettings, setShowSettings] = useState(false);
 
 	const handleLogout = () => {
-		logout(); // clear auth + storage
-		navigate("/"); // go to homepage
+		logout();
+		navigate("/");
 	};
 
-	const navLinkBase = "no-underline px-[15px] py-2.5 rounded-lg transition-colors duration-300 hover:bg-gray-800 hover:text-gray-100";
-	const navLinkSubBase = "no-underline px-[15px] py-1 rounded-lg text-[0.95rem] transition-colors duration-300 relative ml-[15px] hover:bg-gray-800 hover:text-gray-100";
-	
-	const getNavLinkClass = (view) => {
-		return activeView === view 
-			? `${navLinkBase} bg-[#1c2027] text-[#c5c5c5]` 
-			: `${navLinkBase} text-gray-200`;
-	};
-
-	const getNavSubClass = (view) => {
-		return activeView === view 
-			? `${navLinkSubBase} bg-[#1c2027] text-[#c5c5c5]` 
-			: `${navLinkSubBase} text-gray-400`;
-	};
+	const navItems = [
+		{ id: "dashboard", label: "Dashboard", icon: "📊" },
+		{ id: "diet-plan", label: "My Diet Plan", icon: "🥗" },
+		{ id: "meal-log", label: "Meal Log", icon: "📝" },
+		{ id: "nutrient-insights", label: "Nutrient Insights", icon: "🔬" },
+		{ id: "health-progress", label: "Health Progress", icon: "📈" },
+		{ id: "ayurvedic-profile", label: "Ayurvedic Profile", icon: "🌿" },
+		{ id: "settings", label: "Settings", icon: "⚙️" },
+	];
 
 	return (
-		<div className="h-[90vh] w-[15vw] bg-gradient-to-b from-[#111217] to-[#0b0c10] rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.6)] flex flex-col items-center p-5 overflow-y-auto border border-white/5 [&::-webkit-scrollbar]:w-[6px]">
-			<div className="text-[1.5rem] font-semibold text-gray-200 mb-2.5 z-10">
-				<img src={logo} alt="Profile Icon" className="w-[80px] h-[80px] rounded-full bg-[#2d2f36] flex items-center justify-center mb-[15px]" />
+		<div className="w-[260px] h-full bg-white border-r border-[#e2e8f0] flex flex-col py-[24px] px-[20px] shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-10 shrink-0">
+			{/* Brand Logo */}
+			<div className="flex items-center gap-[12px] mb-[40px] px-[10px]">
+				<span className="text-[2rem] leading-none">🌿</span>
+				<div className="flex flex-col">
+					<h2 className="text-[1.2rem] font-bold text-[#2d5a27] leading-tight m-0">AyurDiet</h2>
+					<span className="text-[0.65rem] font-bold text-[#6b7280] uppercase tracking-wider">Health Tracker</span>
+				</div>
 			</div>
 
-			<div className="mt-[15px] w-full flex flex-col gap-3 text-white z-10">
-				<div className="w-full h-px bg-[#cfcece]/10" />
-				<Link
-					onClick={() => setActiveView("dashboard")}
-					className={getNavLinkClass("dashboard")}
-				>
-					Dashboard
-				</Link>
-				<Link
-					onClick={() => setActiveView("analytics")}
-					className={getNavSubClass("analytics")}
-				>
-					Analytics
-				</Link>
-				<Link
-					onClick={() => setActiveView("dashboard")}
-					className={getNavSubClass("")}
-				>
-					Dietitian
-				</Link>
-				<Link
-					onClick={() => setActiveView("dashboard")}
-					className={getNavSubClass("")}
-				>
-					Medical
-				</Link>
-				<Link
-					onClick={() => setActiveView("dashboard")}
-					className={getNavSubClass("")}
-				>
-					Diet Plan
-				</Link>
-				<Link
-					onClick={() => setActiveView("chat")}
-					className={getNavSubClass("chat")}
-				>
-					Chat
-				</Link>
-				<Link
-					onClick={() => setActiveView("appointments")}
-					className={getNavSubClass("appointments")}
-				>
-					Appointments
-				</Link>
-				<div className="w-full h-px bg-[#cfcece]/10" />
-				<span className="text-[#fefeff] px-[15px] py-[7px] rounded-lg text-[0.95rem] ml-0 cursor-default">Recipies</span>
-				<Link
-					onClick={() => setActiveView("cookbook")}
-					className={getNavSubClass("cookbook")}
-				>
-					Cookbook
-				</Link>
-				<Link
-					onClick={() => setActiveView("favorites")}
-					className={getNavSubClass("favorites")}
-				>
-					Favorites
-				</Link>
-
-				<div className="w-full h-px bg-[#cfcece]/10" />
-				<div className="text-[#fefeff] px-[15px] py-[7px] rounded-lg text-[0.95rem] ml-0 cursor-default">Support</div>
-				<Link
-					onClick={() => setActiveView("contact")}
-					className={getNavSubClass("contact")}
-				>
-					Contact Us
-				</Link>
-				<Link
-					onClick={() => setActiveView("call")}
-					className={getNavSubClass("call")}
-				>
-					Call Us
-				</Link>
-				<Link
-					onClick={() => setActiveView("chatbot")}
-					className={getNavSubClass("chatbot")}
-				>
-					Chat with AI
-				</Link>
-
-				<div className="w-full h-px bg-[#cfcece]/10" />
-				<span className="text-[#fefeff] px-[15px] py-[7px] rounded-lg text-[0.95rem] ml-0 cursor-default">Miscellaneous</span>
-				<Link className="no-underline text-gray-400 px-[15px] py-1 rounded-lg text-[0.95rem] transition-colors duration-300 relative ml-[15px] hover:bg-gray-800 hover:text-gray-100" onClick={() => setShowSettings(true)}>
-					Settings
-				</Link>
-				<Link
-					className="no-underline text-gray-400 px-[15px] py-1 rounded-lg text-[0.95rem] transition-colors duration-300 relative ml-[15px] hover:bg-gray-800 hover:text-gray-100"
+			{/* Navigation */}
+			<div className="flex flex-col gap-[6px] flex-1 overflow-y-auto pr-[4px] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-[#cbd5e1] [&::-webkit-scrollbar-thumb]:rounded-full">
+				<div className="text-[0.7rem] font-bold text-[#9ca3af] uppercase tracking-wider mb-[8px] pl-[10px]">Main Menu</div>
+				{navItems.map((item) => (
+					<button
+						key={item.id}
+						onClick={() => {
+							if (item.id === "settings") setShowSettings(true);
+							else setActiveView(item.id);
+						}}
+						className={`flex items-center gap-[12px] px-[14px] py-[12px] rounded-[12px] text-[0.95rem] font-semibold transition-all duration-[0.2s] cursor-pointer text-left border-none bg-transparent ${
+							activeView === item.id && item.id !== "settings"
+								? "bg-[#f0fdf4] text-[#166534] shadow-[0_2px_8px_rgba(22,101,52,0.06)]"
+								: "text-[#4b5563] hover:bg-[#f8fafc] hover:text-[#111827]"
+						}`}
+					>
+						<span className="text-[1.15rem] opacity-90 drop-shadow-sm">{item.icon}</span>
+						{item.label}
+					</button>
+				))}
+				
+				<div className="w-full h-px bg-[#e2e8f0] my-[12px]"></div>
+				
+				{/* Logout */}
+				<button
 					onClick={() => setShowConfirm(true)}
+					className="flex items-center gap-[12px] px-[14px] py-[12px] rounded-[12px] text-[0.95rem] font-semibold transition-all duration-[0.2s] cursor-pointer text-left border-none bg-transparent text-[#ef4444] hover:bg-[#fef2f2]"
 				>
+					<span className="text-[1.15rem] opacity-90 drop-shadow-sm">🚪</span>
 					Logout
-				</Link>
+				</button>
 			</div>
 
-			{/* Settings model */}
+			{/* CTA Card */}
+			<div className="mt-[20px] p-[20px] rounded-[16px] bg-[linear-gradient(135deg,#e0f2fe,#dcfce7)] border border-white shadow-[0_8px_20px_rgba(22,101,52,0.08)] relative overflow-hidden shrink-0">
+				<div className="absolute top-[-20%] right-[-10%] text-[4.5rem] opacity-10 rotate-[15deg] pointer-events-none drop-shadow-md">🥗</div>
+				<h4 className="text-[1rem] font-extrabold text-[#111827] mb-[6px] relative z-10">Log Today's Meal</h4>
+				<p className="text-[0.8rem] text-[#4b5563] mb-[16px] relative z-10 font-medium leading-[1.4]">Track your nutrition to balance your Doshas.</p>
+				<button className="w-full py-[12px] bg-[linear-gradient(135deg,#16a34a,#15803d)] text-white rounded-[10px] text-[0.9rem] font-bold border-none cursor-pointer transition-all hover:shadow-[0_4px_12px_rgba(21,128,61,0.3)] hover:-translate-y-[1px] relative z-10">
+					Add Meal
+				</button>
+			</div>
+
+			{/* Modals */}
 			{showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
-
-			{/* Confirm Modal */}
 			{showConfirm && (
-				<div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[999]">
-					<div className="bg-[#141c19]/95 rounded-[18px] px-[35px] py-[30px] w-[320px] text-center border border-[#8cc8a0]/15 shadow-[0_30px_60px_rgba(0,0,0,0.8)]">
-						<h3 className="text-[#e7efe9] mb-2.5 text-xl font-semibold m-0">Log out?</h3>
-						<p className="text-[#9fb4a7] text-[0.95rem] m-0 mb-4">Are you sure you want to log out of your account?</p>
-
-						<div className="mt-[25px] flex justify-between">
-							<button
-								className="bg-transparent border border-white/20 text-[#9fb4a7] px-5 py-2.5 rounded-lg cursor-pointer"
-								onClick={() => setShowConfirm(false)}
-							>
-								Cancel
-							</button>
-							<button className="bg-gradient-to-br from-[#6ea88f] to-[#b8a46d] text-[#0b1411] px-[22px] py-2.5 rounded-lg border-none font-semibold cursor-pointer shadow-[0_8px_20px_rgba(110,168,143,0.4)]" onClick={handleLogout}>
-								Logout
-							</button>
+				<div className="fixed inset-0 bg-[#00000066] backdrop-blur-[4px] flex justify-center items-center z-[999] p-4">
+					<div className="bg-white rounded-[24px] p-[32px] w-full max-w-[380px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] text-center animate-[popDigit]">
+						<div className="text-[3.5rem] mb-[12px] drop-shadow-md">🚪</div>
+						<h3 className="text-[1.4rem] font-bold text-[#111827] mb-[8px]">Log out?</h3>
+						<p className="text-[#6b7280] text-[0.95rem] mb-[28px] font-medium">Are you sure you want to exit your workspace?</p>
+						<div className="flex gap-[12px]">
+							<button onClick={() => setShowConfirm(false)} className="flex-1 py-[12px] rounded-[12px] bg-white border border-[#e2e8f0] text-[#4b5563] font-bold cursor-pointer transition-all hover:bg-[#f8fafc] hover:border-[#cbd5e1] hover:-translate-y-[1px]">Cancel</button>
+							<button onClick={handleLogout} className="flex-1 py-[12px] rounded-[12px] bg-[linear-gradient(135deg,#ef4444,#dc2626)] border-none text-white font-bold cursor-pointer transition-all shadow-[0_4px_12px_rgba(239,68,68,0.3)] hover:shadow-[0_6px_16px_rgba(239,68,68,0.4)] hover:-translate-y-[1px]">Logout</button>
 						</div>
 					</div>
 				</div>
